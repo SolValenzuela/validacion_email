@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+        crossorigin="anonymous">
+    <title>Resultado emails</title>
+</head>
+<body>
+    <div class="card col-5 mx-auto border p-5 my-5 text-light bg-dark">
+        <h1 class="text-center text-primary">Aquí están los emails</h1>
+        <div class="bg-success text-dark">
+            {% with messages = get_flashed_messages() %}     
+                {% if messages %} 
+                    <h5 class="text-center">Email creado correctamente!</h5>                           
+                    {% for message in messages %}            
+                        <p>{{message}}</p>                   
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+        {% for email in emails %}
+        <h5>{{email.email}} <a href="/destroy/{{email.id}}">Eliminar</a></h5>
+        {%endfor%}
+        <a class="text-light"href="/">Home</a>
+    </div>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
